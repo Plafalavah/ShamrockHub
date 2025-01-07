@@ -6,6 +6,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-left'>
             <Link to="/" className="logo">Shamrock Hub</Link>
+            <img src={`${process.env.PUBLIC_URL}/clover.png`} width={25} height={25} alt="Clover Logo" />
         </div>
         <div className="navbar-center">
             <ul className="nav-links">
