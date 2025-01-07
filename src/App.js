@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import TicTacToe from './tictactoe.js';
 import ConnectFour from './connectfour.js';
 import Home from './home.js';
+import GfGWeatherApp from './Weather.js';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/tictactoe" element={<TicTacToe />} />
         <Route path="/connectfour" element={<ConnectFour />} />
+        <Route path="/weather" element={<GfGWeatherApp />} />
       </Routes>
     </BrowserRouter>
   );
