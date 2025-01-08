@@ -4,10 +4,6 @@
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html {
-	background-color: #f7f7f7;
-}
-
 .app-name {
 	font-size: 2.3rem;
 	color: rgb(17, 144, 0);
@@ -43,7 +39,7 @@ html {
 	padding: 12px 40px 12px 40px;
 	-webkit-transition: width 0.4s ease-in-out;
 	transition: width 0.4s ease-in-out;
-	color: #333;
+	color: #ffffff;
 }
 
 .city-search:focus {
@@ -76,7 +72,17 @@ html {
 
 .des-wind {
 	font-weight: 500;
-	color: #666;
+	color: #ffffff;
+}
+
+.feels-like {
+	font-weight: 500;
+	color: #ffffff;
+}
+
+.humidity {
+	font-weight: 500;
+	color: #ffffff;
 }
 
 .error-message {

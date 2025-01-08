@@ -122,8 +122,14 @@ function GfGWeatherApp() {
                     </div>
                     <div className="des-wind">
                         <p>{weather.data.weather[0].description.toUpperCase()}</p>
-                        <p>Wind Speed: {(weather.data.wind.speed * 3.25084).toFixed(0)}ft/s</p>
+                        <p>Wind Speed: {(weather.data.wind.speed).toFixed(0)}mph</p>
                     </div>
+					<div className='feels-like'>
+						<p>Feels like {(weather.data.main.feels_like).toFixed(0)}<sup className="deg">°F</sup> </p> 
+					</div>
+					<div className='humidity'>
+						<p>Humidity {(weather.data.main.humidity).toFixed(0)}%</p>
+					</div>
                 </div>
             )}
         </div>
