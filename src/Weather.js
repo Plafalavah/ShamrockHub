@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Oval } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFrown } from '@fortawesome/free-solid-svg-icons';
-import './index.css';
+import './weather.css';
 
 function GfGWeatherApp() {
     const [zipcode, setZip] = useState('');
@@ -12,8 +12,6 @@ function GfGWeatherApp() {
         data: {},
         error: false,
     });
-
-	
 
     const toDateFunction = () => {
         const months = [
@@ -76,7 +74,7 @@ function GfGWeatherApp() {
 					loading: false,
 					error: false,
 				});
-				
+
 			} catch (error) {
 				console.log('Error:', error);
 				setWeather({ ...weather, data: {}, loading: false, error: true });
@@ -116,7 +114,7 @@ function GfGWeatherApp() {
                 </>
             )}
             {weather && weather.data && weather.data.main && (
-                <div>
+                <div className='display'>
                     <div className="city-name">
                         <h2>
                             {weather.data.name}, <span>{weather.data.state}</span>, <span>{weather.data.sys.country}</span>
