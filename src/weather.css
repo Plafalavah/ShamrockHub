@@ -19,10 +19,14 @@
 	min-height: 440px;
 	background-color: rgb(255, 255, 255);
 	text-align: center;
-	margin: 128px auto;
+	margin: 0 auto; 
 	border-radius: 10px;
 	padding-bottom: 32px;
-	box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .city-name {

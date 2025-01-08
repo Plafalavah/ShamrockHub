@@ -13,6 +13,8 @@ function GfGWeatherApp() {
         error: false,
     });
 
+	
+
     const toDateFunction = () => {
         const months = [
             'January',
@@ -44,31 +46,43 @@ function GfGWeatherApp() {
         return date;
     };
 
-    const search = async (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            setWeather({ ...weather, loading: true });
-            const url = 'https://api.openweathermap.org/data/2.5/weather';
-            const api_key = 'c80b67eaae40e00d83bbcc8af4fa487f';
-            await axios
-                .get(url, {
-                    params: {
-                        zip: `${zipcode},us`,
-                        units: 'imperial',
-                        appid: api_key,
-                    },
-                })
-                .then((res) => {
-                    console.log('Full weather data:', res.data);
-                    setWeather({ data: res.data, loading: false, error: false });
-                })
-                .catch((error) => {
-                    setWeather({ ...weather, data: {}, error: true });
-                    setZip('');
-                    console.log('error', error);
-                });
-        }
-    };
+	const search = async (event) => {
+		if (event.key === 'Enter') {
+			event.preventDefault();
+			setWeather({ ...weather, loading: true });
+	
+			const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
+			const weatherApiKey = 'c80b67eaae40e00d83bbcc8af4fa487f';
+			const zipUrl = `https://api.zippopotam.us/us/${zipcode}`;
+	
+			try {
+
+				const weatherResponse = await axios.get(weatherUrl, {
+					params: {
+						zip: `${zipcode},us`,
+						units: 'imperial',
+						appid: weatherApiKey,
+					},
+				});
+	
+				console.log('Full weather data:', weatherResponse.data);
+	
+				const zipResponse = await axios.get(zipUrl);
+				const state = zipResponse.data.places[0].state;
+				console.log('State: ', state);
+	
+				setWeather({
+					data: { ...weatherResponse.data, state },
+					loading: false,
+					error: false,
+				});
+				
+			} catch (error) {
+				console.log('Error:', error);
+				setWeather({ ...weather, data: {}, loading: false, error: true });
+			}
+		}
+	};
 
     return (
         <div className="App">
@@ -105,7 +119,7 @@ function GfGWeatherApp() {
                 <div>
                     <div className="city-name">
                         <h2>
-                            {weather.data.name}, <span>{weather.data.sys.country}</span>
+                            {weather.data.name}, <span>{weather.data.state}</span>, <span>{weather.data.sys.country}</span>
                         </h2>
                     </div>
                     <div className="date">
