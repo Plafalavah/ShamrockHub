@@ -13,8 +13,9 @@ code {
 }
 
 .home {
-  background-color: #435b3d; /* Replace with your desired color */
-  min-height: 100vh; /* Ensures the background covers the full screen */
+  background-image: url('../public/clover_background.jpg');
+  background-size: 1500px;
+  min-height: 100vh; 
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -27,11 +28,23 @@ code {
 .title {
   color: white;
   font-weight: 3000;
-  font-size: 30px;
+  font-size: 50px;
   justify-content: center;
 }
 
 .title-paragraph {
   color: white;
-  font-weight: 300;
+  font-weight: bold;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white
+}
+
+a:hover {
+  color: greenyellow
 }
