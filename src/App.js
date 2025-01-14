@@ -5,6 +5,7 @@ import TicTacToe from './tictactoe.js';
 import ConnectFour from './connectfour.js';
 import Home from './home.js';
 import GfGWeatherApp from './Weather.js';
+import Sim from './Simulation.js';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/tictactoe" element={<TicTacToe />} />
         <Route path="/connectfour" element={<ConnectFour />} />
         <Route path="/weather" element={<GfGWeatherApp />} />
+        <Route path="/simulation" element={<Sim />} />
       </Routes>
     </BrowserRouter>
   );
