@@ -6,7 +6,8 @@
     font-family: sans-serif;
     margin: 20px;
     padding: 0;
-    background-color: #435b3d;
+    background-image: url("../public/clover_background.jpg");
+    background-size: 1500px;
   }
   
   h1 {

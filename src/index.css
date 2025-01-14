@@ -13,8 +13,6 @@ code {
 }
 
 .home {
-  background-image: url('../public/clover_background.jpg');
-  background-size: 1500px;
   min-height: 100vh; 
   margin: 0;
   display: flex;
