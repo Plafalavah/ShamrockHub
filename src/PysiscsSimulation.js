@@ -23,6 +23,10 @@ const PhysicsSimulation = () => {
     });
     renderRef.current = render;
 
+    // Disable gravity
+    engineRef.current.world.gravity.y = 0.5; // No vertical gravity
+    engineRef.current.world.gravity.x = 0; // No horizontal gravity
+
     // Walls
     const walls = [
       Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true }),
@@ -36,26 +40,21 @@ const PhysicsSimulation = () => {
     const initialBalls = [
       Bodies.circle(200, 100, 20, {
         render: { fillStyle: '#3498db' },
-        restitution: 1.2,
+        restitution: 1.5,
       }),
       Bodies.circle(400, 100, 20, {
         render: { fillStyle: '#e74c3c' },
-        restitution: 1.2,
+        restitution: 1.5,
       }),
     ];
     World.add(engineRef.current.world, initialBalls);
 
-    // Collision Detection: Change color based on speed
+    // Collision Detection: Change color on each bounce
     Events.on(engineRef.current, 'collisionStart', (event) => {
       event.pairs.forEach(({ bodyA, bodyB }) => {
-        const velocityA = Math.sqrt(bodyA.velocity.x ** 2 + bodyA.velocity.y ** 2);
-        const velocityB = Math.sqrt(bodyB.velocity.x ** 2 + bodyB.velocity.y ** 2);
-
-        if (velocityA > velocityB) {
-          bodyB.render.fillStyle = bodyA.render.fillStyle; // A transfers its color to B
-        } else if (velocityB > velocityA) {
-          bodyA.render.fillStyle = bodyB.render.fillStyle; // B transfers its color to A
-        }
+        // Change colors of the balls on collision
+        bodyA.render.fillStyle = getRandomColor();
+        bodyB.render.fillStyle = getRandomColor();
       });
     });
 
@@ -80,9 +79,25 @@ const PhysicsSimulation = () => {
   const addBall = (x, y, color) => {
     const ball = Bodies.circle(x, y, 20, {
       render: { fillStyle: color },
-      restitution: 1,
+      restitution: 1.2,
     });
     World.add(engineRef.current.world, [ball]);
+  };
+
+  const removeBallsAtPosition = (x, y) => {
+    if (engineRef.current) {
+      const bodies = engineRef.current.world.bodies.filter(
+        (body) => !body.isStatic
+      );
+      const bodyToRemove = bodies.find(
+        (body) =>
+          Math.abs(body.position.x - x) < 20 &&
+          Math.abs(body.position.y - y) < 20
+      );
+      if (bodyToRemove) {
+        World.remove(engineRef.current.world, bodyToRemove);
+      }
+    }
   };
 
   const handleMouseDown = (e) => {
@@ -96,9 +111,18 @@ const PhysicsSimulation = () => {
         addBall(x, y, '#3498db');
       } else if (e.button === 2) {
         // Right-click: Remove balls at the clicked position
-        addBall(x, y, '#e74c3c');
+        removeBallsAtPosition(x, y);
       }
     }
+  };
+
+  const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   };
 
   return (
