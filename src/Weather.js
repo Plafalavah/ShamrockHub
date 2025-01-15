@@ -117,7 +117,7 @@ function GfGWeatherApp() {
                 <div className='display'>
                     <div className="city-name">
                         <h2>
-                            {weather.data.name}, <span>{weather.data.state}</span>, <span>{weather.data.sys.country}</span>
+                            {weather.data.name}, <span>{weather.data.state}</span>, <span>{zipcode}</span>
                         </h2>
                     </div>
                     <div className="date">
