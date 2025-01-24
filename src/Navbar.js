@@ -15,6 +15,7 @@ function Navbar() {
                 <li><Link to="/connectfour">ConnectFour</Link></li>
                 <li><Link to="/weather">Weather</Link></li>
                 <li><Link to="/simulation">Simulation</Link></li>
+                <li><Link to="/carremote">CarRemote</Link></li>
             </ul>
         </div>
       </nav>

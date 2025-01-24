@@ -1,53 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import "./sdr.css"; // Import your CSS file
 
-const WebSocketComponent = () => {
-    const [ws, setWs] = useState(null);
-    const [message, setMessage] = useState('');
+function App() {
+    const [messages, setMessages] = useState([]);
+    const [status, setStatus] = useState("Disconnected");
 
-    // Establish WebSocket connection
-    const connectWebSocket = () => {
-        const socket = new WebSocket('ws://localhost:8080');
-        
-        socket.onopen = () => {
-            console.log('Connected to server.');
-            setWs(socket);
+    useEffect(() => {
+        const ws = new WebSocket("ws://localhost:8080");
+
+        ws.onopen = () => {
+            setStatus("Connected");
+            console.log("WebSocket connection opened.");
         };
 
-        socket.onmessage = (event) => {
-            console.log('Message from server:', event.data);
+        ws.onmessage = (event) => {
+            const data = event.data;
+            console.log("Received:", data);
+            setMessages((prevMessages) => [...prevMessages, data]);
         };
 
-        socket.onclose = () => {
-            console.log('Disconnected from server.');
-            setWs(null);
+        ws.onclose = () => {
+            setStatus("Disconnected");
+            console.log("WebSocket connection closed.");
         };
 
-        socket.onerror = (error) => {
-            console.error('WebSocket error:', error);
+        ws.onerror = (error) => {
+            console.error("WebSocket error:", error);
         };
-    };
 
-    const sendMessage = () => {
-        if (ws) {
-            ws.send(message);
-            console.log('Message sent:', message);
-        } else {
-            console.error('WebSocket connection not established.');
-        }
-    };
+        return () => {
+            ws.close();
+        };
+    }, []);
 
     return (
-        <div>
-            <button onClick={connectWebSocket}>Connect</button>
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Enter message"
-            />
-            <button onClick={sendMessage} disabled={!ws}>Send to USB</button>
+        <div className="app-container">
+            <h1>GNU Radio Data Viewer</h1>
+            <p className={`status ${status.toLowerCase()}`}>Status: {status}</p>
+            
+            <div className="messages-container">
+                <h2>Received Data:</h2>
+                {messages.length === 0 ? (
+                    <p className="no-data">No data received yet.</p>
+                ) : (
+                    <ul className="message-list">
+                        {messages.map((msg, index) => (
+                            <li key={index} className="message-item">{msg}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
-};
+}
 
-export default WebSocketComponent;
+export default App;

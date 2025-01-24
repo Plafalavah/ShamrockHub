@@ -6,7 +6,7 @@ import ConnectFour from './connectfour.js';
 import Home from './home.js';
 import GfGWeatherApp from './Weather.js';
 import PhysicsSimulation from './PysiscsSimulation.js';
-
+import WebSocketComponent from './CarRemote.js';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <Route path="/connectfour" element={<ConnectFour />} />
         <Route path="/weather" element={<GfGWeatherApp />} />
         <Route path="/simulation" element={<PhysicsSimulation />} />
+        <Route path="/carremote" element={<WebSocketComponent />} />
       </Routes>
     </BrowserRouter>
   );
