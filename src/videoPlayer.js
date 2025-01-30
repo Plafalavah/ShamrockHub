@@ -20,6 +20,8 @@ function VideoPlayer() {
         showPortrait
         background={true}
         controls={false}
+        height={200}
+        width={400}
       />
 
       <h2>Youtube</h2>
