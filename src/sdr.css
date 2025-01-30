@@ -29,7 +29,7 @@ h1 {
 .status.disconnected {
     color: #fff;
     background-color: #f44336; /* Red */
-}
+} 
 
 .messages-container {
     max-width: 600px;

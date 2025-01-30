@@ -1,57 +1,94 @@
 import React, { useEffect, useState } from "react";
 import "./sdr.css"; // Import your CSS file
 
-function App() {
-    const [messages, setMessages] = useState([]);
+function CarRemote() {
     const [status, setStatus] = useState("Disconnected");
+    const [ws, setWs] = useState(null);
+    const [fileChunks, setFileChunks] = useState([]); // To store the chunks
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:8080");
+        const websocket = new WebSocket("ws://localhost:8080");
 
-        ws.onopen = () => {
+        websocket.onopen = () => {
             setStatus("Connected");
             console.log("WebSocket connection opened.");
         };
 
-        ws.onmessage = (event) => {
-            const data = event.data;
-            console.log("Received:", data);
-            setMessages((prevMessages) => [...prevMessages, data]);
-        };
-
-        ws.onclose = () => {
+        websocket.onclose = () => {
             setStatus("Disconnected");
             console.log("WebSocket connection closed.");
         };
 
-        ws.onerror = (error) => {
+        websocket.onerror = (error) => {
             console.error("WebSocket error:", error);
         };
 
-        return () => {
-            ws.close();
+        websocket.onmessage = (event) => {
+            console.log("Received message:", event.data);  // Debugging log
+
+            // Check if the received data is a chunk or end signal
+            if (event.data instanceof ArrayBuffer) {
+                console.log("Received chunk:", event.data); // Log received chunk
+                setFileChunks((prevChunks) => [...prevChunks, event.data]);
+            } else if (event.data === '{"type":"end"}') {
+                console.log("Received end of file signal.");
+                const completeFile = new Uint8Array(fileChunks.reduce((acc, chunk) => acc.concat(Array.from(new Uint8Array(chunk))), []));
+                console.log("File reassembled:", completeFile);
+                // Here you can add your logic to process the complete file.
+            }
         };
-    }, []);
+
+        setWs(websocket);
+
+        return () => {
+            websocket.close();
+        };
+    }, [fileChunks]);
+
+    const sendCommand = (direction) => {
+        if (ws && ws.readyState === WebSocket.OPEN) {
+            let fileName = "";
+
+            switch (direction) {
+                case "up":
+                    fileName = "carup.raw";
+                    break;
+                case "down":
+                    fileName = "cardown.raw";
+                    break;
+                case "left":
+                    fileName = "carleft.raw";
+                    break;
+                case "right":
+                    fileName = "carright.raw";
+                    break;
+                default:
+                    console.error("Invalid direction");
+                    return;
+            }
+
+            console.log(`Playing: ${fileName}`);
+            ws.send(JSON.stringify({ type: "play", file: fileName }));
+        } else {
+            console.error("WebSocket not connected");
+        }
+    };
 
     return (
         <div className="app-container">
-            <h1>GNU Radio Data Viewer</h1>
+            <h1>Car Remote</h1>
             <p className={`status ${status.toLowerCase()}`}>Status: {status}</p>
-            
-            <div className="messages-container">
-                <h2>Received Data:</h2>
-                {messages.length === 0 ? (
-                    <p className="no-data">No data received yet.</p>
-                ) : (
-                    <ul className="message-list">
-                        {messages.map((msg, index) => (
-                            <li key={index} className="message-item">{msg}</li>
-                        ))}
-                    </ul>
-                )}
+
+            <div className="controls">
+                <button onClick={() => sendCommand("up")}>Up</button>
+                <div>
+                    <button onClick={() => sendCommand("left")}>Left</button>
+                    <button onClick={() => sendCommand("right")}>Right</button>
+                </div>
+                <button onClick={() => sendCommand("down")}>Down</button>
             </div>
         </div>
     );
 }
 
-export default App;
+export default CarRemote;
