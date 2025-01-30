@@ -9,7 +9,7 @@ function Circle({ color }) {
       src={color === "red" ? redCircle : blueCircle}
       alt={color === "red" ? "Red Circle" : "Blue Circle"}
       style={{
-        width: '50px', // Diameter of the circle
+        width: '50px', 
         height: '50px',
       }}
     />
@@ -35,7 +35,7 @@ function Board({ xIsNext, squares, onPlay }) {
     const nextSquares = squares.slice();
     const column = i % 7;
   
-    // Find the lowest available square in the column
+  
     for (let row = 5; row >= 0; row--) {
       const index = row * 7 + column;
       if (!nextSquares[index]) {
@@ -46,7 +46,7 @@ function Board({ xIsNext, squares, onPlay }) {
     }
   }
   
-  // Helper function to check if a column is full
+ 
   function isColumnFull(squares, clickedIndex) {
     const column = clickedIndex % 7;
     return squares[column] !== null;

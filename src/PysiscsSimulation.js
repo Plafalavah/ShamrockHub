@@ -49,10 +49,8 @@ const PhysicsSimulation = () => {
     ];
     World.add(engineRef.current.world, initialBalls);
 
-    // Collision Detection: Change color on each bounce
     Events.on(engineRef.current, 'collisionStart', (event) => {
       event.pairs.forEach(({ bodyA, bodyB }) => {
-        // Change colors of the balls on collision
         bodyA.render.fillStyle = getRandomColor();
         bodyB.render.fillStyle = getRandomColor();
       });
@@ -107,10 +105,8 @@ const PhysicsSimulation = () => {
       const y = e.clientY - rect.top;
 
       if (e.button === 0) {
-        // Left-click: Add a blue ball
         addBall(x, y, '#3498db');
       } else if (e.button === 2) {
-        // Right-click: Remove balls at the clicked position
         removeBallsAtPosition(x, y);
       }
     }
@@ -129,7 +125,7 @@ const PhysicsSimulation = () => {
     <div
       ref={sceneRef}
       onMouseDown={handleMouseDown}
-      onContextMenu={(e) => e.preventDefault()} // Prevent default context menu on right-click
+      onContextMenu={(e) => e.preventDefault()}
       style={{
         width: '800px',
         height: '600px',

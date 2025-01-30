@@ -9,6 +9,7 @@ function Home() {
             <p className='title-paragraph'>While you are here, enjoy the <a href='http://localhost:3000/tictactoe'>TicTacToe</a> and the <a href='http://localhost:3000/connectfour'>ConnectFour</a> games</p>
             <p className='title-paragraph'><a color="white"href='http://localhost:3000/weather'>Weather</a> here! <br/>Enter a ZIP code to get the weather of the city in it's respective state. </p>
             <p className='title-paragraph'>Bouncing ball <a href='http://localhost:3000/simulation'>simulation.</a> With each bounce the color changes. Simple, but good for learning Matter-js.</p>
+            <p className='title-paragraph'><a href='http://localhost:3000/videoplayer'>Coding for dummies</a></p>
         </div>
     );
 }
