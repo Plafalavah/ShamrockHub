@@ -1,6 +1,8 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { Button } from 'primereact/button';
+
 function Navbar() {
     return (
       <nav className='navbar'>
@@ -10,12 +12,14 @@ function Navbar() {
         </div>
         <div className="navbar-center">
             <ul className="nav-links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/tictactoe">Tictactoe</Link></li>
-                <li><Link to="/connectfour">ConnectFour</Link></li>
-                <li><Link to="/weather">Weather</Link></li>
-                <li><Link to="/simulation">Simulation</Link></li>
-                <li><Link to="/carremote">CarRemote</Link></li>
+              <Link to="/"> <Button className="nav-button" label="Home" severity="success" icon="pi pi-home" outlined/> </Link>
+              <Link to="/tictactoe"> <Button className="nav-button" label="Tictactoe" severity="success" icon="pi" outlined/> </Link>
+              <Link to="/connectfour"> <Button className="nav-button" label="ConnectFour" severity="success" icon="pi" outlined/> </Link>
+              <Link to="/weather"> <Button className="nav-button" label="Weather" severity="success" icon="pi" outlined/> </Link>
+              <Link to="/simulation"> <Button className="nav-button" label="Simulation" severity="success" icon="pi" outlined/> </Link>
+              <Link to="/carremote"> <Button className="nav-button" label="CarRemote" severity="success" icon="pi" outlined/> </Link>
+              <Link to="/videoplayer"> <Button className="nav-button" label="Videoplayer" severity="success" icon="pi pi-video" outlined/> </Link>
+              <Button icon="pi pi-user" className="nav-button" rounded outlined severity="success" aria-label="User" />
             </ul>
         </div>
       </nav>

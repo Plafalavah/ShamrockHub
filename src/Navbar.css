@@ -1,3 +1,7 @@
+@import 'primereact/resources/themes/lara-light-blue/theme.css'; /* Choose the theme you're using */
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -39,3 +43,8 @@ display: flex;
 align-items: center;
 }
 
+.nav-button {
+    padding: 12px; /* Adjust as needed */
+    margin: 5px; /* Optional: Adds spacing between buttons */
+    font-size: 12px; /* Optional: Adjusts text size */
+}
