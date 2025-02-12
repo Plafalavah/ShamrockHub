@@ -28,7 +28,7 @@ body {
 }
 
 .square:hover {
-    background-color: #cac9c9;
+    background-color: #e0e0e0;
 }
 
 .status {
@@ -37,8 +37,8 @@ body {
 }
 
 button {
-    margin-top: 5px;
-    padding: 1px 1px;
+    margin-top: 20px;
+    padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
 }

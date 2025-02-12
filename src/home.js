@@ -9,9 +9,9 @@ function Home() {
             </header>
             <main>
                 <section className="intro">
-                    <p className="title-paragraph">
+                    <h2 className="title-paragraph">
                         This is my lovely React site that I have thrown together. It's rough, it's unpolished but it will get there with time.
-                    </p>
+                    </h2>
                 </section>
                 <section className="title-paragraph">
                     <h2 className='heading'>Games</h2>
@@ -24,21 +24,21 @@ function Home() {
                         </li>
                     </ul>
                 </section>
-                <section className="heading">
-                    <h2>Weather</h2>
+                <section>
+                    <h2 className="heading">Weather</h2>
                     <p className="title-paragraph">
                         <a href="http://localhost:3000/weather">Weather</a> here! <br />
                         Enter a ZIP code to get the weather of the city in its respective state.
                     </p>
                 </section>
                 <section className="heading">
-                    <h2>Simulation</h2>
+                    <h2 className="heading">Simulation</h2>
                     <p className="title-paragraph">
                         Bouncing ball <a href="http://localhost:3000/simulation">simulation</a>. With each bounce, the color changes. Simple, but good for learning Matter-js.
                     </p>
                 </section>
                 <section className="heading">
-                    <h2>Video Player</h2>
+                    <h2 className="heading">Video Player</h2>
                     <p className="title-paragraph">
                         <a href="http://localhost:3000/videoplayer">Videoplayer (in-work)</a>
                     </p>
