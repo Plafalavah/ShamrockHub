@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
 }
 
 code {
@@ -30,6 +31,11 @@ code {
   justify-content: center;
 }
 
+.heading {
+  color: white;
+  font-weight: 600;
+}
+
 .title-paragraph {
   color: white;
   font-weight: bold;
@@ -40,9 +46,9 @@ a:link {
 }
 
 a:visited {
-  color: white
+  color: white;
 }
 
 a:hover {
-  color: greenyellow
+  color: greenyellow;
 }
