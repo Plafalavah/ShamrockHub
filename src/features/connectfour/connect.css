@@ -7,7 +7,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
-  background-image: url("../public/clover_background.jpg");
+  background-image: url("../../assets/clover_background.jpg");
   background-size: cover;
   background-attachment: fixed;
 }

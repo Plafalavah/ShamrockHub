@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar';
-import TicTacToe from './tictactoe.js';
-import ConnectFour from './connectfour.js';
+import Navbar from './components/Navbar.js';
+import TicTacToe from './features/tic-tac-toe/tictactoe.js';
+import ConnectFour from './features/connectfour/connectfour.js';
 import Home from './home.js';
-import GfGWeatherApp from './Weather.js';
-import PhysicsSimulation from './PhysicsSimulation.js';
-import WebSocketComponent from './CarRemote.js';
-import VideoPlayer from './videoPlayer.js';
+import GfGWeatherApp from './features/weather/Weather.js';
+import PhysicsSimulation from './features/ball-simulation/PhysicsSimulation.js';
+import WebSocketComponent from './features/car-remote/CarRemote.js';
+import VideoPlayer from './components/videoPlayer.js';
 
 function App() {
   return (
