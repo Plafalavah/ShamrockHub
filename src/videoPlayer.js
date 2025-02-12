@@ -1,50 +1,75 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ReactPlayer from 'react-player'
-import { Player } from 'video-react'
-import Vimeo from '@u-wave/react-vimeo'
-import YouTube from '@u-wave/react-youtube'
-
-import './styles.css'
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import YouTube from "@u-wave/react-youtube";
+import "./videoplayer.css";
 
 function VideoPlayer() {
+  const [volume, setVolume] = useState(50); // Default volume
+  const [player, setPlayer] = useState(null); // Store YouTube player instance
+
+  const handleVolumeChange = (event) => {
+    const newVolume = parseInt(event.target.value, 10);
+    setVolume(newVolume);
+    if (player) {
+      player.setVolume(newVolume);
+    }
+  };
+
   return (
     <div className="App">
-      <h1>Appropriated from CodeSandbox</h1>
-      <h2>VImeo</h2>
-      <Vimeo
-        video="https://vimeo.com/226260195"
-        autoplay={false}
-        loop
-        muted={false}
-        showPortrait
-        background={true}
-        controls={false}
-        height={200}
-        width={400}
-      />
+      <h1>Coding Video</h1>
 
       <h2>Youtube</h2>
-      <YouTube video="Bcm8tkZDxXM" autoplay />
+      <YouTube
+        video="q-_ezD9Swz4"
+        autoplay
+        muted
+        height={500}
+        width={1000}
+        volume={volume}
+        onReady={(event) => setPlayer(event.target)}
+      />
 
-      <h2>ReactPlayer</h2>
-      <div style={{ height: '25vh' }}>
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=rnwlWn603g4"
-          className="react-player"
-          playing={false}
-          width="100%"
-          height="100%"
-        />
+      {/* Volume slider */}
+      <div className="volume-container">
+        <VolumeSlider volume={volume} onVolumeChange={handleVolumeChange} />
       </div>
-      <Player style={{ width: '500px' }}>
-        <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
-      </Player>
     </div>
-  )
+  );
 }
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(<VideoPlayer />, rootElement)
+const VolumeSlider = ({ volume, onVolumeChange }) => {
+  return (
+    <label className="slider">
+      <input
+        type="range"
+        className="level"
+        min="0"
+        max="100"
+        value={volume}
+        onChange={onVolumeChange}
+      />
+      <svg
+        className="volume"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <g>
+          <path
+            d="M18.36 19.36a1 1 0 0 1-.705-1.71C19.167 16.148 20 14.142 20 12s-.833-4.148-2.345-5.65a1 1 0 1 1 1.41-1.419C20.958 6.812 22 9.322 22 12s-1.042 5.188-2.935 7.069a.997.997 0 0 1-.705.291z"
+            fill="currentColor"
+          ></path>
+          <path
+            d="M15.53 16.53a.999.999 0 0 1-.703-1.711C15.572 14.082 16 13.054 16 12s-.428-2.082-1.173-2.819a1 1 0 1 1 1.406-1.422A6 6 0 0 1 18 12a6 6 0 0 1-1.767 4.241.996.996 0 0 1-.703.289zM12 22a1 1 0 0 1-.707-.293L6.586 17H4c-1.103 0-2-.897-2-2V9c0-1.103.897-2 2-2h2.586l4.707-4.707A.998.998 0 0 1 13 3v18a1 1 0 0 1-1 1z"
+            fill="currentColor"
+          ></path>
+        </g>
+      </svg>
+    </label>
+  );
+};
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<VideoPlayer />, rootElement);
 
 export default VideoPlayer;

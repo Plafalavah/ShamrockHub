@@ -5,7 +5,7 @@ import TicTacToe from './tictactoe.js';
 import ConnectFour from './connectfour.js';
 import Home from './home.js';
 import GfGWeatherApp from './Weather.js';
-import PhysicsSimulation from './PysiscsSimulation.js';
+import PhysicsSimulation from './PhysicsSimulation.js';
 import WebSocketComponent from './CarRemote.js';
 import VideoPlayer from './videoPlayer.js';
 
@@ -27,3 +27,4 @@ function App() {
 }
 
 export default App;
+

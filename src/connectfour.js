@@ -1,7 +1,7 @@
 import { useState } from "react";
 import redCircle from './red_circle.png';
 import blueCircle from './blue_circle.png';
-import './styles.css'
+import './connect.css'
 
 function Circle({ color }) {
   return (

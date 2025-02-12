@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Engine, Render, Bodies, World, Runner, Events } from 'matter-js';
+import './simulation.css'
 
 const PhysicsSimulation = () => {
   const sceneRef = useRef(null);
