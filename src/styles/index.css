@@ -21,7 +21,6 @@ code {
   align-items: center;
   vertical-align: top;
   padding-top: 130px;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
   padding-left: 20px;
   padding-right: 20px;
   
@@ -35,18 +34,98 @@ code {
 }
 
 .title-paragraph {
+  display:flex;
+  gap: 20px;
+  flex-wrap: wrap;
   color: white;
   font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 50px;
 }
 
 a:link {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 a:visited {
-  color: white
+  color: rgb(0, 0, 0)
 }
 
 a:hover {
-  color: greenyellow
+  color: rgb(94, 98, 88)
+}
+
+
+.book {
+  position: relative;
+  border-radius: 20px;
+  width: 220px;
+  height: 300px;
+  -webkit-box-shadow: 1px 1px 12px #000;
+  box-shadow: 1px 1px 12px #000;
+  -webkit-transform: preserve-3d;
+  -ms-transform: preserve-3d;
+  transform: preserve-3d;
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #000;
+  font-size: small;
+  background-image: linear-gradient(144deg,#4b9466, #259d2b 50%,#9fc40b);
+}
+
+.cover {
+  top: 0;
+  position: absolute;
+  background-image: linear-gradient(144deg,#2c5b3d, #39825f 50%,#218743);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform-origin: 0;
+  -ms-transform-origin: 0;
+  transform-origin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  
+}
+
+.book:hover .cover {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: rotatey(-110deg);
+  -ms-transform: rotatey(-110deg);
+  transform: rotatey(-110deg);
+}
+
+p {
+  font-size: 20px;
+}
+
+.site-description {
+  color: white;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 50px;
 }

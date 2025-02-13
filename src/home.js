@@ -14,35 +14,64 @@ function Home() {
                     </h2>
                 </section>
                 <section className="title-paragraph">
-                    <h2 className='heading'>Games</h2>
-                    <ul>
-                        <li>
-                            <a href="http://localhost:3000/tictactoe">TicTacToe</a>
-                        </li>
-                        <li>
-                            <a href="http://localhost:3000/connectfour">ConnectFour</a>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 className="heading">Weather</h2>
-                    <p className="title-paragraph">
-                        <a href="http://localhost:3000/weather">Weather</a> here! <br />
-                        Enter a ZIP code to get the weather of the city in its respective state.
-                    </p>
-                </section>
-                <section className="heading">
-                    <h2 className="heading">Simulation</h2>
-                    <p className="title-paragraph">
-                        Bouncing ball <a href="http://localhost:3000/simulation">simulation</a>. With each bounce, the color changes. Simple, but good for learning Matter-js.
-                    </p>
-                </section>
-                <section className="heading">
-                    <h2 className="heading">Video Player</h2>
-                    <p className="title-paragraph">
-                        <a href="http://localhost:3000/videoplayer">Videoplayer (in-work)</a>
-                    </p>
-                </section>
+                    <div className="book">
+                        <ul>
+                            <li>
+                                <a href="http://localhost:3000/tictactoe">Tic-Tac-Toe</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:3000/connectfour">ConnectFour</a>
+                            </li>
+                        </ul>
+                        <div className="cover">
+                            <div className="card-content">
+                            <p>Games</p>
+                        </div></div>
+                    </div>
+                        <div className="book">
+                            <ul>
+                                <li>
+                                    <a href="http://localhost:3000/weather">Weather by ZIP</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:3000/">Placeholder</a>
+                                </li>
+                            </ul>
+                            <div className="cover">
+                                <p>Weather</p>
+                            </div>
+                        </div>
+                        <div className="book">
+                            <ul>
+                                <li>
+                                    <a href="http://localhost:3000/simulation">Bouncing ball simulation</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:3000/">Placeholder</a>
+                                </li>
+                            </ul>
+                            <div className="cover">
+                                <p>Simulation</p>
+                            </div>
+                        </div>
+                        <div className="book">
+                            <ul>
+                                <li>
+                                    <a href="http://localhost:3000/simulation">Coding Video</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:3000/">Placeholder</a>
+                                </li>
+                            </ul>
+                            <div className="cover">
+                                <p>Videoplayer</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="site-description">
+                        <h2>What is the Shamrock Hub?</h2>
+                        <p>This is my own personal React playground. I take different ideas and mash them together into...this abomination.</p>
+                    </section>
             </main>
         </div>
     );
