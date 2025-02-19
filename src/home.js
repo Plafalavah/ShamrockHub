@@ -5,12 +5,12 @@ function Home() {
     return (
         <div className="home">
             <header>
-                <h1 className="title">Welcome to the Shamrock Hub</h1>
+                <h1 className="title focus-in-expand">Welcome to the Shamrock Hub</h1>
             </header>
             <main>
                 <section className="intro">
-                    <h2 className="title-paragraph">
-                        This is my lovely React site that I have thrown together. It's rough, it's unpolished but it will get there with time.
+                    <h2 className="typewriter">
+                        This is my lovely React site that I have thrown together.
                     </h2>
                 </section>
                 <section className="title-paragraph">

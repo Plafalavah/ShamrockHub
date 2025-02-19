@@ -58,6 +58,7 @@ a:hover {
 }
 
 
+/* Container for the book element with 3D perspective and shadow effects */
 .book {
   position: relative;
   border-radius: 20px;
@@ -80,10 +81,11 @@ a:hover {
   -ms-flex-pack: center;
   justify-content: center;
   color: #000;
-  font-size: small;
+  font-size: large;
   background-image: linear-gradient(144deg,#4b9466, #259d2b 50%,#9fc40b);
 }
 
+/* Styling for the book cover with gradient background and transition effects */
 .cover {
   top: 0;
   position: absolute;
@@ -106,9 +108,10 @@ a:hover {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  
+  font-size: x-large;
 }
 
+/* Rotate the book cover on hover to create a 3D flip effect */
 .book:hover .cover {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -128,4 +131,57 @@ p {
   align-items: center;
   text-align: center;
   padding-top: 50px;
+}
+
+/* Animation class to apply focus-in-expand effect */
+.focus-in-expand {
+  -webkit-animation: focus-in-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: focus-in-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+/* Keyframes for focus-in-expand animation */
+@-webkit-keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em; /* Initial letter spacing */
+    -webkit-filter: blur(12px); /* Initial blur effect */
+            filter: blur(12px); /* Initial blur effect */
+    opacity: 0; /* Initial opacity */
+  }
+  100% {
+    -webkit-filter: blur(0px); /* Final blur effect */
+            filter: blur(0px); /* Final blur effect */
+    opacity: 1; /* Final opacity */
+  }
+}
+
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em; /* Initial letter spacing */
+    -webkit-filter: blur(12px); /* Initial blur effect */
+            filter: blur(12px); /* Initial blur effect */
+    opacity: 0; /* Initial opacity */
+  }
+  100% {
+    -webkit-filter: blur(0px); /* Final blur effect */
+            filter: blur(0px); /* Final blur effect */
+    opacity: 1; /* Final opacity */
+  }
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Centers the text horizontally */
+  animation: 
+    typing 3.5s steps(40, end) 2s,
+    blink-caret .75s step-end infinite 2s;
+  color: white;
+  text-align: center; /* Keeps the text centered */
+  visibility: hidden; /* Initially hidden */
+  animation-fill-mode: forwards; /* Ensures the element stays visible after animation */
+}
+
+@keyframes typing {
+  from { width: 0; visibility: visible; } /* Starts typing and becomes visible */
+  to { width: 100%; visibility: visible; } /* Ensures it remains visible after typing */
 }
