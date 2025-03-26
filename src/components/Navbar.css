@@ -6,45 +6,94 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #272730;
     color: #fff;
-    padding: 1rem;
+    padding: 0.5rem;
 }
   
 .navbar-left .logo {
-font-size: 1.5rem;
-font-weight: bold;
-color: #fff;
-text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
 }
 
 .navbar-center .nav-links {
-list-style-type: none;
-display: flex;
-margin: 0;
-padding: 0;
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-center .nav-links a:hover {
-color: rgb(162, 236, 102);
+    color: rgb(131, 247, 37);
 }
 
 .navbar-center .nav-links li {
-margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .navbar-center .nav-links a {
-color: #fff;
-text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .navbar-right {
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .nav-button {
     padding: 12px; /* Adjust as needed */
     margin: 5px; /* Optional: Adds spacing between buttons */
     font-size: 12px; /* Optional: Adjusts text size */
+}
+
+/* Custom button styles */
+.custom-nav-button {
+    --button-text-color: white;
+    --button-border-color: white;
+    --button-background-color: transparent;
+    --button-hover-text-color: #333;
+    --button-hover-border-color: #fff;
+    --button-hover-background-color: #fff;
+    color: var(--button-text-color);
+    border-color: var(--button-border-color);
+    background-color: var(--button-background-color);
+}
+
+.custom-nav-button:hover {
+    color: var(--button-hover-text-color);
+    border-color: var(--button-hover-border-color);
+    background-color: var(--button-hover-background-color);
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-center .p-menu {
+    background-color: #333;
+    border: none;
+}
+
+.navbar-center .p-menuitem-link {
+    color: #fff;
+}
+
+.navbar-center .p-menuitem-link:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.navbar-center .p-button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+}
+
+.navbar-center .p-button:hover {
+    background-color: #444;
+    color: #fff;
 }

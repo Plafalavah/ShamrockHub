@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { Button } from 'primereact/button';
+import { Menu } from 'primereact/menu';
 
 function Navbar() {
-    return (
-      <nav className='navbar'>
-      <div className='navbar-left'>
-        <Link to="/" className="logo">Shamrock Hub</Link>
-        <img src={require('../assets/clover.png')} width={25} height={25} alt="Clover Logo" />
-      </div>
-      <div className="navbar-center">
-        <ul className="nav-links">
-          <Link to="/"> <Button className="nav-button" label="Home" severity="success" icon="pi pi-home" outlined/> </Link>
-          <Link to="/tictactoe"> <Button className="nav-button" label="Tictactoe" severity="success" icon="pi" outlined/> </Link>
-          <Link to="/connectfour"> <Button className="nav-button" label="ConnectFour" severity="success" icon="pi" outlined/> </Link>
-          <Link to="/weather"> <Button className="nav-button" label="Weather" severity="success" icon="pi" outlined/> </Link>
-          <Link to="/simulation"> <Button className="nav-button" label="Simulation" severity="success" icon="pi" outlined/> </Link>
-          <Link to="/carremote"> <Button className="nav-button" label="CarRemote" severity="success" icon="pi" outlined/> </Link>
-          <Link to="/videoplayer"> <Button className="nav-button" label="Videoplayer" severity="success" icon="pi pi-video" outlined/> </Link>
-          <Button icon="pi pi-user" className="nav-button" rounded outlined severity="success" aria-label="User" />
-        </ul>
-      </div>
-      </nav>
-    );
-  }
+    const menu = useRef(null);
 
-export default Navbar
+    const items = [
+        { label: 'Home', icon: 'pi pi-home', command: () => { window.location.href = "/" } },
+        { label: 'Tictactoe', icon: 'pi pi-th-large', command: () => { window.location.href = "/tictactoe" } },
+        { label: 'ConnectFour', icon: 'pi pi-th-large', command: () => { window.location.href = "/connectfour" } },
+        { label: 'Weather', icon: 'pi pi-cloud', command: () => { window.location.href = "/weather" } },
+        { label: 'Simulation', icon: 'pi pi-cog', command: () => { window.location.href = "/simulation" } },
+        { label: 'CarRemote', icon: 'pi pi-car', command: () => { window.location.href = "/carremote" } },
+        { label: 'Videoplayer', icon: 'pi pi-video', command: () => { window.location.href = "/videoplayer" } },
+        { label: 'Budget', icon: 'pi pi-money-bill', command: () => { window.location.href = "/budget" } }
+    ];
+
+    return (
+        <nav className='navbar'>
+            <div className='navbar-left'>
+                <Link to="/" className="logo">Shamrock Hub</Link>
+                <img src={require('../assets/clover.png')} width={25} height={25} alt="Clover Logo" />
+            </div>
+            <div className="navbar-center">
+                <Menu model={items} popup ref={menu} id="popup_menu" />
+                <Button label="Menu" icon="pi pi-bars" onClick={(event) => menu.current.toggle(event)} aria-controls="popup_menu" aria-haspopup />
+            </div>
+        </nav>
+    );
+}
+
+export default Navbar;

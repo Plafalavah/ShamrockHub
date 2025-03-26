@@ -67,6 +67,19 @@ function Home() {
                                 <p>Videoplayer</p>
                             </div>
                         </div>
+                        <div className="book">
+                            <ul>
+                                <li>
+                                    <a href="http://localhost:3000/budget">Budget App</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost:3000/">Placeholder</a>
+                                </li>
+                            </ul>
+                            <div className="cover">
+                                <p>Calulations</p>
+                            </div>
+                        </div>
                     </section>
                     <section className="site-description">
                         <h2>What is the Shamrock Hub?</h2>

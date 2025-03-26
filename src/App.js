@@ -8,6 +8,7 @@ import GfGWeatherApp from './features/weather/Weather.js';
 import PhysicsSimulation from './features/ball-simulation/PhysicsSimulation.js';
 import WebSocketComponent from './features/car-remote/CarRemote.js';
 import VideoPlayer from './components/videoPlayer.js';
+import Budget from './features/budget/Budget.js';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/simulation" element={<PhysicsSimulation />} />
         <Route path="/carremote" element={<WebSocketComponent />} />
         <Route path="/videoplayer" element={<VideoPlayer />} />
+        <Route path="/budget" element={<Budget />} />
       </Routes>
     </BrowserRouter>
   );
